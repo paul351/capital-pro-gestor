@@ -7,6 +7,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SolicitudesListaComponent } from './pages/solicitudes/solicitudes-lista/solicitudes-lista.component';
 import { SolicitudesModalComponent } from './pages/solicitudes/solicitudes-modal/solicitudes-modal.component';
 import { IndicadoresListaComponent } from './pages/indicadores/indicadores-lista/indicadores-lista.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { IndicadoresListaComponent } from './pages/indicadores/indicadores-lista
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
