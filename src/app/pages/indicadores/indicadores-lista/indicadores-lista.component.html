@@ -1,1 +1,21 @@
-<p>indicadores-lista works!</p>
+<div class="row d-flex justify-content-center">
+    <div class="col-md-11">
+        <div class="card">
+            <div class="card-header">
+                <div class="form-inline">
+                    <h5 class="m-0 p-2" style="text-transform: capitalize;">Grafica de cantidad de solicitudes por fechas</h5>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body d-flex justify-content-center">
+                <ngx-charts-bar-vertical [view]="view" [results]="dataGrafica" [xAxis]="showXAxis" [yAxis]="showYAxis"
+                    [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                    [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -40,18 +40,13 @@ export class SolicitudesModalComponent implements OnInit {
       this.formGroup.get('afectado')?.setValidators([Validators.required])
       this.formGroup.updateValueAndValidity()
     }
-    console.log(this.formGroup.getRawValue());
   }
 
   onGuardar() {
-    console.log(this.tipo);
-    
     if (this.tipo == 'solicitud') {
       this.formGroup.get('fecha_creacion')?.setValue(this.fechaActual.toLocaleString("sv-SE", {hour12: false}))
     }
     if (this.tipo == 'gestion') {
-      console.log(this.tipoProceso);
-      
       switch (Number(this.tipoProceso)) {
         case tiposProcesos.evaluacion:
           this.addEvaluacion();

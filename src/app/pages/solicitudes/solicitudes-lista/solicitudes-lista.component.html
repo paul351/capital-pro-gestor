@@ -3,33 +3,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="form-inline">
-                    <h5 class="m-0" style="text-transform: capitalize;">Lista de solicitudes</h5>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="row g-3">
-                    <div class="col-md-3">
-                        <label for="afectado">Afectado</label>
-                        <input type="text" class="form-control form-control-sm" id="afectado">
-                    </div>
-                    <div class="col-md-3">
-                        <label for="mes">Mes</label>
-                        <select name="mes" id="mes" class="form-select form-select-sm">
-                            <option [value]="1">Enero</option>
-                            <option [value]="2">Febrero</option>
-                            <option [value]="3">Marzo</option>
-                            <option [value]="4">Abril</option>
-                            <option [value]="5">Mayo</option>
-                            <option [value]="6">Junio</option>
-                            <option [value]="7">Julio</option>
-                            <option [value]="8">Agosto</option>
-                            <option [value]="9">Septiembre</option>
-                            <option [value]="10">Octubre</option>
-                            <option [value]="11">Noviembre</option>
-                            <option [value]="12">Diciembre</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3"></div>
+                    <h5 class="m-0 p-2" style="text-transform: capitalize;">Lista de solicitudes</h5>
                 </div>
             </div>
         </div>
@@ -39,7 +13,7 @@
                 <button class="btn btn-success rounded-circle float-end me-2" (click)="onModal('solicitud', null)" title="Click para nueva solicitud" ngbTooltip="Nueva solicitud">
                     <p class="p-0 m-0">+</p>
                 </button>
-                <table class="table table-hover">
+                <table class="table table-sm table-hover">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -64,7 +38,12 @@
                                     </button>
                                 </div>
                             </td>
-                            <td>{{item.estado}}</td>
+                            <td class="text-center">
+                                <span *ngIf="item.estado == tiposProcesos.revisar" class="badge text-bg-success p-2">Por revisar</span>
+                                <span *ngIf="item.estado == tiposProcesos.evaluacion" class="badge text-bg-info p-2">Evaluando</span>
+                                <span *ngIf="item.estado == tiposProcesos.implementacion" class="badge text-bg-primary p-2">Implementando</span>
+                                <span *ngIf="item.estado == tiposProcesos.termino" class="badge text-bg-warning p-2">Terminado</span>
+                            </td>
                             <td class="text-center">
                                 <button class="btn btn-outline-info rounded-circle" ngbTooltip="Gestionar proceso" (click)="onModal('gestion', item)">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
