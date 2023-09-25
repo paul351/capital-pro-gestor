@@ -1,6 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 body{
     font-family: Montserrat, Helvetica Neue, Arial, sans-serif !important;
+    background-color: #f4f3ef !important;
 }
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+.btn-danger {
+    background-color: #eb6532 !important;
+}
+
+.modal-header .close {
+    background-color: #f4f3ef;
+    border-radius: 50%;
+    font-size: 0.9375rem;
+    line-height: 0;
+    padding: .4rem;
+}
+
+.card {
+    box-shadow: 0 1px 3px #0000001a,0 1px 2px #0000000f;
+    color: #322f2c;
+    margin-bottom: 20px;
+    border: 0 none;
+    transition: transform .3s cubic-bezier(.34,2,.6,1),box-shadow .2s ease;
+}

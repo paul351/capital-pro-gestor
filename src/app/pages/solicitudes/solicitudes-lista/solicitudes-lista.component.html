@@ -1,28 +1,75 @@
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Afectado</th>
-            <th>Solicitud</th>
-            <th>Fecha de solicitud</th>
-            <th>Proceso</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of data()?.solicitud; let i = index" title="click para expandir">
-            <td>{{i+1}}</td>
-            <td>{{item.afectado}}</td>
-            <td>{{item.solicitud}}</td>
-            <td>{{item.fecha_solicitud | date: 'dd/MM/yyyy'}}</td>
-            <td class="text-center text-warning pointer" (click)="onModal(item)">
-                <div class="pe-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+<div class="row d-flex justify-content-center">
+    <div class="col-md-11">
+        <div class="card">
+            <div class="card-header">
+                <div class="form-inline">
+                    <h5 class="m-0" style="text-transform: capitalize;">Lista de solicitudes</h5>
                 </div>
-            </td>
-            <td></td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label for="afectado">Afectado</label>
+                        <input type="text" class="form-control form-control-sm" id="afectado">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="mes">Mes</label>
+                        <select name="mes" id="mes" class="form-select form-select-sm">
+                            <option [value]="1">Enero</option>
+                            <option [value]="2">Febrero</option>
+                            <option [value]="3">Marzo</option>
+                            <option [value]="4">Abril</option>
+                            <option [value]="5">Mayo</option>
+                            <option [value]="6">Junio</option>
+                            <option [value]="7">Julio</option>
+                            <option [value]="8">Agosto</option>
+                            <option [value]="9">Septiembre</option>
+                            <option [value]="10">Octubre</option>
+                            <option [value]="11">Noviembre</option>
+                            <option [value]="12">Diciembre</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-3">
+            <div class="card-body">
+                <button class="btn btn-success rounded-circle float-end me-2" (click)="onModal('solicitud', null)" title="Click para nueva solicitud">
+                    <p class="p-0 m-0">+</p>
+                </button>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Afectado</th>
+                            <th>Solicitud</th>
+                            <th>Fecha de solicitud</th>
+                            <th>Proceso</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of data()?.solicitud; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{item.afectado}}</td>
+                            <td>{{item.solicitud}}</td>
+                            <td>{{item.fecha_solicitud | date: 'dd/MM/yyyy'}}</td>
+                            <td class="text-center text-warning pointer" (click)="onModal('proceso', item)">
+                                <div class="pe-auto">
+                                    <button type="button" class="btn btn-outline-warning rounded-circle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                                    </button>
+                                </div>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
