@@ -1,8 +1,9 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Solicitud, SolicitudElement } from 'src/app/models/solicitud';
+import { Proceso, Solicitud, SolicitudElement } from 'src/app/models/solicitud';
 import { DataService } from 'src/app/services/data.service';
 import { SolicitudesModalComponent } from '../solicitudes-modal/solicitudes-modal.component';
+import { tiposProcesos } from 'src/app/services/data';
 
 @Component({
   selector: 'app-solicitudes-lista',
@@ -12,25 +13,52 @@ import { SolicitudesModalComponent } from '../solicitudes-modal/solicitudes-moda
 export class SolicitudesListaComponent implements OnInit {
 
   data = signal<Solicitud | null>(null)
-
+  estado = '';
+  
   constructor(private dataService: DataService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.data.set(this.dataService.getSolicitud())
-    console.log(this.data());
   }
 
   onModal(tipo: string, data: SolicitudElement | null) {
     SolicitudesModalComponent.prototype.data = data
     SolicitudesModalComponent.prototype.tipo = tipo
-    this.modalService.open(SolicitudesModalComponent, { keyboard: false, size: 'lg' }).result.then((res : {success: boolean, data: SolicitudElement, type: string}) => {
+    this.modalService.open(SolicitudesModalComponent, { keyboard: false, size: 'lg', backdrop: 'static' }).result.then((res : {success: boolean, data: SolicitudElement, tipo: string}) => {
       if (res?.success) {
-        this.data.update( data => {
-          data!.solicitud?.push(res.data)
-          return data
-        })
+        if (res.tipo == 'solicitud') {
+          this.data.update( data => {
+            data!.solicitud?.push(res.data)
+            return data
+          })
+        } else {
+          this.data.update( data => {
+            const index = data!.solicitud?.findIndex(element => element.idsolicitud == res.data.idsolicitud)
+            data!.solicitud![index!] = res.data
+            return data
+          })
+        }
       }
-      console.log(this.data());
     })
+  }
+
+  agregarEstado(procesos: Proceso[]) {
+    for (let i = 0; i < procesos.length; i++) {
+      for (const key in procesos[i]) {
+        if (key == 'idtermino') {
+          this.estado = 'terminado'
+          break;
+        }
+        if (key == 'idimplementacion') {
+          this.estado = 'implementado'
+          break;
+        }
+        if (key == 'idevaluacion') {
+          this.estado = 'evaluando'
+          break;
+        }
+      }
+    }
+    return this.estado
   }
 }

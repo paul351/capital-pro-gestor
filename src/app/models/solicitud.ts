@@ -8,6 +8,7 @@ export interface SolicitudElement {
     solicitud: string;
     fecha_creacion: Date|string;
     afectado: string;
+    estado: number;
     proceso: Proceso[];
 }
 
@@ -21,4 +22,7 @@ export interface Proceso {
     fecha_implementacion?: Date|string;
     implementacion?: string;
     solicitud_evaluacion?: string;
+    idtermino?: string;
+    termino?: string;
+    fecha_termino?: Date|string;
 }

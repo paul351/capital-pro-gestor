@@ -8,6 +8,10 @@ export class DataService {
 
   constructor() { }
 
+  getTipoProceso() {
+    return [{value: 1, name: 'Evaluación'}, {value: 2, name: 'Implementación'}, {value: 3, name: 'Termino'}]
+  }
+
   generateUUID() {
     let d = new Date().getTime();
     let uuid = 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -16,7 +20,7 @@ export class DataService {
         return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
     });
     return uuid;
-}
+  }
 
   getSolicitud(): Solicitud {
     return {
@@ -27,6 +31,7 @@ export class DataService {
           "solicitud": "Solicitan arrendamiento de una bomba para riego de 210 manzanas de tierra.",
           "fecha_creacion": "2023-07-18 04:18:41",
           "afectado": "Juan Salcedo",
+          "estado": 2,
           "proceso": [
             {
               "idevaluacion": "3",
@@ -50,6 +55,7 @@ export class DataService {
           "solicitud": "Solicitud corresponde a rótulos de identificación de la aldea y señalización de cruce para las aldeas San Benito la Bomba y Las Animas. Así, como rótulos de ornato ( No tirar basura).",
           "fecha_creacion": "2023-07-17 03:18:41",
           "afectado": "Sandra Billar",
+          "estado": 2,
           "proceso": [
             {
               "idevaluacion": "4",
@@ -73,6 +79,7 @@ export class DataService {
           "solicitud": "Solicita un plan o respuesta como solucionar la excesiva velocidad de los vehículos de la empresa, proveedores y transporte particular de sus empleados.",
           "fecha_creacion": "2023-07-13 04:18:41",
           "afectado": "Cameron Diaz",
+          "estado": 2,
           "proceso": [
             {
               "idevaluacion": "1",

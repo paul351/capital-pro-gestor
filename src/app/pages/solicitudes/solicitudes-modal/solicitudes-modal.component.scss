@@ -1,0 +1,90 @@
+.card-timeline .timeline {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+    position: relative;
+}
+.card-timeline .timeline>li:last-child {
+    margin-bottom: 0;
+}
+.card-timeline .timeline>li {
+    margin-bottom: 20px;
+    position: relative;
+}
+.card-timeline .timeline>li>.timeline-badge {
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    margin-left: -25px;
+    background-color: #66615b;
+    z-index: 100;
+    border-radius: 50%;
+    border: 3px solid #F4F3EF;
+}
+.card-timeline .timeline-badge.success {
+    background-color: #44c47d!important;
+}
+.card-timeline .mini-timeline>li>.timeline-panel {
+    float: right!important;
+    width: 90%!important;
+}
+.card-timeline .timeline>li>.timeline-panel {
+    width: 45%;
+    float: left;
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: 0 2px 2px HSLA(38,16%,76%,.5);
+    background-color: #f4f3ef;
+    color: #322f2c;
+    position: relative;
+}
+
+
+.badge.badge-success {
+    border-color: #44c47d;
+    background-color: #44c47d;
+}
+
+.card-timeline .mini-timeline>li>.timeline-panel:after {
+    border-left-width: 0!important;
+    border-right-width: 14px!important;
+    left: -14px!important;
+    right: auto!important;
+}
+.card-timeline .timeline>li>.timeline-panel:after {
+    position: absolute;
+    top: 27px;
+    right: -14px;
+    display: inline-block;
+    border-top: 14px solid transparent;
+    border-left: 14px solid white;
+    border-right: 0 solid #F4F3EF;
+    border-bottom: 14px solid transparent;
+    content: " ";
+}
+.card-timeline .timeline:before {
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 3px;
+    background-color: #ddd;
+    left: 50%;
+    margin-left: -1.5px;
+}
+.card-timeline .timeline>li:after, .card-timeline .timeline>li:before {
+    content: " ";
+    display: table;
+}
+.card-timeline .mini-timeline:before, .card-timeline .mini-timeline>li>.timeline-badge {
+    left: 3%!important;
+}
+
+
+
+
+

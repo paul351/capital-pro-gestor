@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h4 class="modal-title">Hi there!</h4>
+    <h5 class="modal-title">{{tipo.toUpperCase()}}</h5>
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close(null)"></button>
 </div>
 <div class="modal-body">
@@ -11,13 +11,50 @@
             </div>
             <div class="form-group">
                 <label for="solicitud">Solicitud</label>
-                <textarea name="solicitud" id="solicitud" rows="4" class="form-control form-control-sm" formControlName="solicitud"></textarea>
+                <textarea name="solicitud" id="solicitud" rows="4" class="form-control form-control-sm"
+                    formControlName="solicitud"></textarea>
             </div>
         </ng-container>
-        <ng-container *ngIf="tipo == 'proceso'"> proceso</ng-container>
+        <ng-container *ngIf="tipo == 'proceso'">
+            <div class="card card-timeline">
+                <div class="card-body">
+                    <h5 class="font-weight-bold" style="margin-bottom: 5px; margin-top: 10px; margin-left: 35px;">
+                        {{data?.afectado}}</h5>
+                    <ul class="timeline mini-timeline">
+                        <li type="success" *ngFor="let proceso of data?.proceso">
+                            <div class="timeline-panel mb-3">
+                                <div class="timeline-heading d-flex align-items-center">
+                                    <span class="badge badge-pill badge-success h6 m-0">{{proceso.fecha_evaluacion ||
+                                        proceso.fecha_implementacion || proceso.fecha_termino}}</span>
+                                </div>
+                                <div class="timeline-body">
+                                    <p><strong>{{proceso.idevaluacion? 'Evaluacion' :
+                                            proceso.idimplementacion? 'Implementacion':
+                                            proceso.idtermino? 'Termino' : null}}:
+                                        </strong> {{proceso.evaluacion || proceso.implementacion|| proceso.termino}}</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </ng-container>
     </form>
+    <ng-container *ngIf="tipo == 'gestion'">
+        <div class="form-group">
+            <label for="tipo">Tipo de proceso</label>
+            <select name="tipo" id="tipo" [(ngModel)]="tipoProceso" class="form-select form-select-sm">
+                <option [value]="0" disabled selected>Seleccione</option>
+                <option *ngFor="let data of tipoProcesoData" [value]="data.value">{{data.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="detalle">Detalle del proceso</label>
+            <textarea name="detalle" id="detalle" rows="4" class="form-control form-control-sm" [(ngModel)]="detalle"></textarea>
+        </div>
+    </ng-container>
 </div>
-<div class="modal-footer">
+<div class="modal-footer" *ngIf="tipo != 'proceso'">
     <button type="button" class="btn btn-danger btn-sm" (click)="activeModal.close(null)">Cerrar</button>
     <button class="btn btn-success btn-sm" [disabled]="formGroup.invalid" (click)="onGuardar()">Guardar</button>
 </div>
